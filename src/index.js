@@ -73,7 +73,7 @@ function renderResults(location, results) {
     {},
     el("th", {}, "Tími"),
     el("th", {}, "Hiti (°C)"),
-    el("th", {}, "Úrkoma (mm)"),
+    el("th", {}, "Úrkoma (mm)")
   );
   console.log(results);
   const rows = results.map((forecast) =>
@@ -82,8 +82,8 @@ function renderResults(location, results) {
       {},
       el("td", {}, forecast.time.slice(11, 16)), // Velur bara HH:MM hlutann
       el("td", {}, forecast.temperature !== 0 ? forecast.temperature : "0"),
-      el("td", {}, forecast.precipitation !== 0 ? forecast.precipitation : "0"),
-    ),
+      el("td", {}, forecast.precipitation !== 0 ? forecast.precipitation : "0")
+    )
   );
 
   const resultsTable = el("table", { class: "forecast" }, header, ...rows);
@@ -91,7 +91,7 @@ function renderResults(location, results) {
   const coordinatesText = el(
     "p",
     {},
-    `Spá fyrir daginn á breiddargráðu ${location.lat} og lengdargráðu ${location.lng}.`,
+    `Spá fyrir daginn á breiddargráðu ${location.lat} og lengdargráðu ${location.lng}.`
   );
 
   renderIntoResultsContent(
@@ -100,8 +100,8 @@ function renderResults(location, results) {
       {},
       el("h2", {}, `Leitarniðurstöður fyrir: ${location.title}`),
       coordinatesText,
-      resultsTable,
-    ),
+      resultsTable
+    )
   );
 }
 
@@ -163,7 +163,7 @@ async function onSearchMyLocation() {
       const results = await weatherSearch(latitude, longitude);
       renderResults(
         { title: "My Location", lat: latitude, lng: longitude },
-        results,
+        results
       );
     } catch (error) {
       renderError(error);
@@ -182,11 +182,7 @@ function renderLocationButton(locationTitle, onSearch) {
   const locationElement = el(
     "li",
     { class: "locations__location" },
-    el(
-      "button",
-      { class: "locations__button", click: onSearch },
-      locationTitle,
-    ),
+    el("button", { class: "locations__button", click: onSearch }, locationTitle)
   );
 
   /* Til smanburðar við el fallið ef við myndum nota DOM aðgerðir
@@ -219,7 +215,7 @@ function render(container, locations, onSearch, onSearchMyLocation) {
   const inngangstexti = document.createElement("p");
   heading.appendChild(document.createTextNode("Veður skeður❤️"));
   inngangstexti.appendChild(
-    document.createTextNode("Veldu stað til að sjá hita og úrkomuspá"),
+    document.createTextNode("Veldu stað til að sjá hita og úrkomuspá")
   );
   headerElement.appendChild(heading);
   headerElement.appendChild(inngangstexti);
@@ -239,7 +235,7 @@ function render(container, locations, onSearch, onSearchMyLocation) {
   // <div class="loctions"><ul class="locations__list"><li><li><li></ul></div>
   const myLocationButton = renderLocationButton(
     "Mín staðsetning",
-    onSearchMyLocation,
+    onSearchMyLocation
   );
   locationsListElement.appendChild(myLocationButton);
   for (const location of locations) {
