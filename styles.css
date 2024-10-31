@@ -77,6 +77,8 @@ main {
 
 .forecast {
   border-spacing: 0;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .forecast th,
@@ -85,6 +87,6 @@ main {
   text-align: left;
 }
 
-.forecast tbody tr:nth-child(2n + 1) {
+.forecast tr:nth-child(2n + 1) {
   background-color: var(--color-background-zebra);
 }
